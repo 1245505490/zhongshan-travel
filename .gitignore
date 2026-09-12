@@ -1,0 +1,36 @@
+# ===== 构建 / 研究中间产物（不是网站本身，禁止入库）=====
+.research-state/
+.contract-errors/
+browser-qa/
+*.py
+
+# 各种构建报告与数据 JSON（站点不依赖任何 json）
+*.json
+.travel-build-state.json
+.validation-cache.json
+INSTALL_REPORT.json
+MEDIA_AUDIT.json
+MEDIA_PREFLIGHT.json
+RENDER_REPORT.json
+RESEARCH_PROVENANCE.json
+asset-fetch-report.json
+asset-manifest.json
+asset-manifest.template.json
+browser-qa.json
+destination-profile.json
+destination-profile.schema.json
+destination-profile.template.json
+probe1.json
+probe2.json
+render-bindings.json
+render-bindings.template.json
+research-plan.json
+travel-brief.json
+
+# 常规忽略
+node_modules/
+*.zip
+.DS_Store
+
+# QA 截图证据（非网站本体，不入库）
+qa-evidence/
