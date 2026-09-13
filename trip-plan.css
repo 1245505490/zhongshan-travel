@@ -1,0 +1,107 @@
+/* 行程日期 / 天数控件样式（贴合手册的绿+米色体系） */
+
+.trip-plan-bar {
+  background: #123f37;
+  color: #f6f0e4;
+  border-bottom: 3px solid #d9aa62;
+  position: relative;
+  z-index: 4;
+}
+.trip-plan-bar__inner {
+  width: min(1160px, 100% - 48px);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 18px;
+  padding: 14px 0;
+}
+.trip-plan-bar__label {
+  font: 800 12px/1 "Microsoft YaHei", sans-serif;
+  letter-spacing: .16em;
+  color: #d9aa62;
+  padding-right: 6px;
+  border-right: 1px solid rgba(246, 240, 228, .22);
+}
+.trip-plan-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, .08);
+  border: 1px solid rgba(246, 240, 228, .2);
+  border-radius: 12px;
+  padding: 6px 12px;
+}
+.trip-plan-field > span {
+  font: 700 12px/1 "Microsoft YaHei", sans-serif;
+  color: rgba(246, 240, 228, .75);
+}
+.trip-plan-field input[type="date"] {
+  border: 0;
+  background: transparent;
+  color: #fffdf8;
+  font: 700 14px/1.2 "Microsoft YaHei", sans-serif;
+  color-scheme: dark;
+  min-width: 128px;
+  cursor: pointer;
+}
+.trip-plan-field input[type="date"]:focus { outline: 2px solid rgba(217, 170, 98, .55); border-radius: 6px; }
+.trip-plan-arrow { color: #d9aa62; font-style: normal; font-weight: 800; }
+.trip-plan-total {
+  margin-left: auto;
+  font: 700 13px/1 "Microsoft YaHei", sans-serif;
+  color: rgba(246, 240, 228, .9);
+}
+.trip-plan-total b { color: #d9aa62; font-size: 20px; margin: 0 3px; }
+
+/* 旅程概览里的天数步进器 */
+.trip-plan-stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 4px;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(18, 63, 55, .08);
+  border: 1px solid rgba(18, 63, 55, .14);
+}
+.trip-plan-stepper button {
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(18, 63, 55, .18);
+  border-radius: 50%;
+  background: #fffdf8;
+  color: #123f37;
+  font: 800 18px/1 "Microsoft YaHei", sans-serif;
+  cursor: pointer;
+  transition: .16s;
+}
+.trip-plan-stepper button:hover { background: #123f37; color: #fffdf8; }
+.trip-plan-stepper__val {
+  font: 700 14px/1 "Microsoft YaHei", sans-serif;
+  color: #123f37;
+  min-width: 54px;
+  text-align: center;
+}
+.trip-plan-stepper__val b { font-size: 20px; }
+
+/* 待编排的一天 */
+.day.is-pending .day-index { color: #bd6246; }
+.day.is-pending summary b { color: #8a6a2f; }
+
+@media (max-width: 720px) {
+  .trip-plan-bar__inner { gap: 10px; padding: 12px 0; }
+  .trip-plan-bar__label { border: 0; padding: 0; width: 100%; }
+  .trip-plan-field { flex: 1 1 140px; }
+  .trip-plan-total { margin-left: 0; width: 100%; }
+}
+
+/* 封面内嵌的出发/返程日期控件（网页开头即可选） */
+.jungle-cover-dates{flex-wrap:wrap}
+.hero-date{display:inline-flex;flex-direction:column;gap:3px;padding:6px 13px;border-radius:12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,247,231,.3)}
+.hero-date>span{color:#d9c49d;font:700 9px/1 Arial,sans-serif;letter-spacing:.18em}
+.hero-date input[type="date"]{border:0;background:transparent;color:#fff7e7;font:600 16px/1.2 "Microsoft YaHei",sans-serif;color-scheme:dark;cursor:pointer}
+.hero-date input[type="date"]:focus{outline:2px solid rgba(217,170,98,.6);border-radius:6px}
+.hero-date-arrow{color:#ead4a8;font-style:normal;font-weight:800;align-self:center}
+.hero-days{color:#fff7e7;font:700 12px/1 "Microsoft YaHei",sans-serif;align-self:center}
+.hero-days b{color:#ead4a8;font-size:20px;margin:0 3px}

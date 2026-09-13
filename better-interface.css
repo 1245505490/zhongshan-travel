@@ -549,10 +549,6 @@ summary:focus-visible{outline:2px solid rgba(23,63,54,.48)!important;outline-off
 @media(max-width:760px){.movement-section .mobile-section-fold>summary,.sights-section .mobile-section-fold>summary{grid-template-columns:minmax(0,1fr) 48px!important;gap:14px!important;min-height:88px!important;padding:17px 16px 17px 19px!important;border-radius:18px!important}.movement-section .mobile-section-fold>summary b,.sights-section .mobile-section-fold>summary b{font-size:19px!important;line-height:1.35!important}.movement-section .mobile-section-fold>summary i,.sights-section .mobile-section-fold>summary i{width:46px!important;min-width:46px!important;height:46px!important;flex-basis:46px!important}}
 
 /* 2026-08-18: final mobile readability pass */
-.stay-section>.shell>.section-heading .section-no,
-.stay-section>.shell>.section-heading .eyebrow{color:#9a573f!important;opacity:1!important;text-shadow:none!important}
-.stay-section>.shell>.section-heading h2{color:#123f37!important;opacity:1!important;text-shadow:none!important}
-.stay-section>.shell>.section-heading>div>p:last-child{color:#506a62!important;opacity:1!important}
 
 @media(max-width:700px){
   .mobile-nav-trigger{color:#fffaf0!important;background:#174f44!important;border:1px solid #4f7f73!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important;box-shadow:0 10px 26px rgba(4,37,32,.24)!important}
