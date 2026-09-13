@@ -88,3 +88,6 @@
 .custom-add-msg{margin:8px 0 0;padding:9px 12px;border-radius:10px;grid-column:1/-1;background:#fdecec;border:1px solid #f3c5c1;color:#b23b2e;font:700 12.5px/1.5 "Microsoft YaHei",sans-serif;animation:customMsgIn .18s ease-out}
 .custom-add-msg[hidden]{display:none}
 @keyframes customMsgIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+.custom-clear-all{margin-left:auto;padding:7px 13px;border:1px solid #e0c6b7;border-radius:999px;background:#fff;color:#9d5c49;font:700 11.5px/1 "Microsoft YaHei",sans-serif;cursor:pointer;transition:.16s;white-space:nowrap}
+.custom-clear-all:hover{background:#9d5c49;color:#fff}
