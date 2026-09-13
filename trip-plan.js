@@ -109,7 +109,6 @@
     if (lede && /^[一二三四五六七八九十两]天/.test(lede.textContent)) {
       lede.textContent = (CNWORD[STATE.days] || (STATE.days + '天')) + lede.textContent.replace(/^[一二三四五六七八九十两]天/, '');
     }
-    $$('.pulse-status > strong').forEach(function (el) { el.textContent = STATE.days + ' 天'; });
     var rh = $('#route .section-heading h2');
     if (rh) rh.textContent = STATE.days + ' 天行程';
     $$('[data-plan-days]').forEach(function (el) { el.textContent = STATE.days; });
@@ -126,7 +125,30 @@
     document.dispatchEvent(e);
   }
 
-  function apply() { ensureBlocks(); paintBlocks(); updateTexts(); dispatch(); }
+  // 距离出发：用户选定的出发日期与今天的差值（实时）
+  function updateCountdown() {
+    var status = $('.pulse-status'); if (!status) return;
+    var small = $('small', status), strong = $('strong', status);
+    var now = new Date();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    var s0 = new Date(STATE.start.getFullYear(), STATE.start.getMonth(), STATE.start.getDate());
+    var endD = addDays(STATE.start, STATE.days - 1);
+    var e0 = new Date(endD.getFullYear(), endD.getMonth(), endD.getDate());
+    if (today < s0) {
+      var diff = Math.round((s0 - today) / 86400000);
+      if (small) small.textContent = '距离出发';
+      if (strong) strong.textContent = diff + ' 天';
+    } else if (today > e0) {
+      if (small) small.textContent = '旅程已完成';
+      if (strong) strong.textContent = STATE.days + ' 天';
+    } else {
+      var day = Math.round((today - s0) / 86400000) + 1;
+      if (small) small.textContent = '旅行进行中 · DAY ' + String(day).padStart(2, '0');
+      if (strong) strong.textContent = '第 ' + day + ' 天';
+    }
+  }
+
+  function apply() { ensureBlocks(); paintBlocks(); updateTexts(); updateCountdown(); dispatch(); }
 
   function buildBar() {
     var host = $('.jungle-cover-dates') || $('header.hero') || $('#top');
