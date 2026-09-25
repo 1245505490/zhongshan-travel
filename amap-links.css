@@ -1,0 +1,20 @@
+/* amap-links.css
+   高德地图相关补充样式（保持与手册既有按钮体系统一）。 */
+
+/* MINI ROUTE 中的"开始导航"入口（每个行程日一个，不增加站点卡片的按钮数量） */
+.route-nav-link{
+  display:inline-flex;align-items:center;gap:7px;
+  margin-top:12px;padding:10px 16px;
+  border:1px solid rgba(255,255,255,.66);border-radius:999px;
+  background:linear-gradient(145deg,rgba(255,255,255,.94),rgba(222,233,227,.9));
+  color:#123b35;text-decoration:none;
+  font:800 12px/1 "Microsoft YaHei",sans-serif;
+  box-shadow:0 8px 20px rgba(10,45,38,.16),inset 0 1px 0 rgba(255,255,255,.85);
+  transition:transform .16s ease,box-shadow .16s ease;
+}
+.route-nav-link:hover{transform:translateY(1px);box-shadow:0 5px 14px rgba(10,45,38,.14),inset 0 1px 0 rgba(255,255,255,.85)}
+.route-nav-link:focus-visible{outline:3px solid rgba(189,98,70,.42);outline-offset:3px}
+.route-nav-link small{font:700 9px/1 Arial,sans-serif;letter-spacing:.14em;color:#9d5945}
+@media(max-width:700px){
+  .route-nav-link{padding:9px 13px;font-size:11px}
+}

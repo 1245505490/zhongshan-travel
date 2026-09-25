@@ -39,7 +39,7 @@
   function migrateLegacy(state) {
     if (Object.keys(state).length) return state;
     try {
-      var legacy = JSON.parse(localStorage.getItem('travel-handbook-packing-legacy') || '[]');
+      var legacy = JSON.parse((localStorage.getItem('travel-handbook-packing-legacy:' + destination) || (destination === '中山' ? localStorage.getItem('travel-handbook-packing-legacy') : null)) || '[]');
       if (Array.isArray(legacy)) {
         legacy.forEach(function (index) {
           if (inputs[index]) state[itemKey(inputs[index], index)] = true;

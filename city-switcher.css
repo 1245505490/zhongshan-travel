@@ -1,0 +1,71 @@
+/* city-switcher.css
+   城市切换器样式：延续手册的玻璃质感按钮 + 纸张面板体系（对标 Theme Switcher）。 */
+
+.city-switcher-launch{
+  position:fixed;top:24px;right:130px;z-index:260;
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:44px;padding:8px 15px;
+  border:1px solid rgba(255,255,255,.62);border-radius:999px;
+  color:#fff;
+  background:color-mix(in srgb,var(--handbook-mid,#176a5c) 80%,transparent);
+  box-shadow:0 14px 34px rgba(0,31,26,.22),inset 0 1px rgba(255,255,255,.42);
+  backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  cursor:pointer;transition:transform .18s ease,background-color .18s ease;
+}
+.city-switcher-launch:hover{transform:translateY(1px)}
+.city-switcher-launch:focus-visible{outline:3px solid var(--handbook-accent,#d8aa62);outline-offset:3px}
+.city-switcher-launch small{font:700 8px/1 Arial,sans-serif;letter-spacing:.18em;color:#ffe3bb;opacity:.92}
+.city-switcher-launch b{font:800 14px/1 "Microsoft YaHei",sans-serif}
+.city-switcher-launch i{font-style:normal;font-size:10px;line-height:1;transition:transform .2s ease}
+.city-switcher-launch[aria-expanded="true"] i{transform:rotate(180deg)}
+
+.city-switcher-panel{
+  position:fixed;top:78px;right:130px;z-index:280;
+  width:min(276px,calc(100vw - 24px));padding:14px;
+  border:1px solid rgba(255,255,255,.72);border-radius:20px;
+  background:color-mix(in srgb,var(--handbook-paper,#f4efe5) 90%,transparent);
+  box-shadow:0 24px 70px rgba(0,28,24,.28);
+  backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+  color:var(--handbook-ink,#103f37);
+  opacity:0;translate:0 -8px;pointer-events:none;
+  transition:opacity .2s ease,translate .2s ease;
+}
+.city-switcher-panel.is-open{opacity:1;translate:0 0;pointer-events:auto}
+.city-switcher-panel header{display:flex;align-items:center;justify-content:space-between;margin-bottom:11px}
+.city-switcher-panel header strong{font:700 14px/1.2 "Microsoft YaHei",sans-serif}
+.city-switcher-panel header button{
+  width:32px;height:32px;border:0;border-radius:50%;
+  background:rgba(255,255,255,.65);color:var(--handbook-ink,#103f37);
+  font-size:19px;line-height:1;cursor:pointer;
+}
+.city-switcher-options{display:grid;gap:8px}
+.city-switcher-option{
+  display:grid;grid-template-columns:20px minmax(0,1fr) auto;align-items:center;gap:10px;
+  min-height:58px;padding:9px 12px;text-align:left;
+  border:1px solid color-mix(in srgb,var(--handbook-ink,#103f37) 13%,transparent);
+  border-radius:14px;background:rgba(255,255,255,.5);
+  color:var(--handbook-ink,#103f37);cursor:pointer;
+  transition:transform .16s ease,box-shadow .16s ease,background-color .16s ease;
+}
+.city-switcher-option:hover{transform:translateY(-1px);background:rgba(255,255,255,.78)}
+.city-switcher-option .dot{position:relative;width:14px;height:14px;border:1.6px solid currentColor;border-radius:50%}
+.city-switcher-option.is-current .dot:after{
+  content:"";position:absolute;inset:2.4px;border-radius:50%;
+  background:var(--handbook-mid,#176a5c);
+}
+.city-switcher-option b{display:block;font:700 15px/1.2 "Microsoft YaHei",sans-serif}
+.city-switcher-option small{display:block;margin-top:3px;font:600 9px/1.3 Arial,sans-serif;letter-spacing:.14em;color:color-mix(in srgb,var(--handbook-ink,#103f37) 60%,transparent)}
+.city-switcher-option em{font:700 10px/1 "Microsoft YaHei",sans-serif;font-style:normal;color:var(--handbook-accent,#d8aa62)}
+.city-switcher-option.is-current{border-color:var(--handbook-mid,#176a5c);box-shadow:inset 0 0 0 1px var(--handbook-mid,#176a5c);background:#fff}
+
+/* 切换城市时的轻微过渡 */
+body.is-city-switching{opacity:0!important;transition:opacity .26s ease!important}
+
+@media(max-width:720px){
+  .city-switcher-launch{top:12px;right:12px;min-height:40px;padding:6px 12px;gap:7px}
+  .city-switcher-launch small{display:none}
+  .city-switcher-panel{top:60px;right:12px}
+}
+@media(prefers-reduced-motion:reduce){
+  .city-switcher-launch,.city-switcher-panel,.city-switcher-option{transition:none!important}
+}

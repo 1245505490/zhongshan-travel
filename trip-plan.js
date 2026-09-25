@@ -19,6 +19,7 @@
   var NUMWORD = { 1: 'ONE', 2: 'TWO', 3: 'THREE', 4: 'FOUR', 5: 'FIVE', 6: 'SIX', 7: 'SEVEN', 8: 'EIGHT', 9: 'NINE', 10: 'TEN' };
   var CNWORD = { 1: '一天', 2: '两天', 3: '三天', 4: '四天', 5: '五天', 6: '六天', 7: '七天', 8: '八天', 9: '九天', 10: '十天' };
   var MAXDAYS = 30;
+  var PLAN_KEY = 'travel-handbook-plan:' + ((document.body && document.body.dataset && document.body.dataset.handbookDestination) || 'guide').toLowerCase();
 
   function parseDate(str) {
     var m = /(\d{4})-(\d{1,2})-(\d{1,2})/.exec(str || '');
@@ -35,7 +36,7 @@
   var STATE = { start: parseDate(firstDateEl ? firstDateEl.textContent : ''), days: REAL };
 
   try {
-    var saved = JSON.parse(localStorage.getItem('travel-handbook-plan') || 'null');
+    var saved = JSON.parse((localStorage.getItem(PLAN_KEY) || (PLAN_KEY.slice(-3) === ':中山' ? localStorage.getItem('travel-handbook-plan') : null)) || 'null');
     if (saved && saved.start) {
       STATE.start = parseDate(saved.start);
       STATE.days = Math.max(1, Math.min(MAXDAYS, saved.days || REAL));
@@ -104,7 +105,7 @@
 
   function updateTexts() {
     var kicker = $('.jungle-cover-kicker');
-    if (kicker) kicker.textContent = 'ZHONGSHAN · ' + (NUMWORD[STATE.days] || STATE.days) + ' DAY' + (STATE.days > 1 ? 'S' : '');
+    if (kicker) kicker.textContent = (window.TravelCities && TravelCities.current().englishName || 'ZHONGSHAN') + ' · ' + (NUMWORD[STATE.days] || STATE.days) + ' DAY' + (STATE.days > 1 ? 'S' : '');
     var lede = $('.hero .lede');
     if (lede && /^[一二三四五六七八九十两]天/.test(lede.textContent)) {
       lede.textContent = (CNWORD[STATE.days] || (STATE.days + '天')) + lede.textContent.replace(/^[一二三四五六七八九十两]天/, '');
@@ -115,7 +116,7 @@
     var si = $('[data-plan-start]'), ei = $('[data-plan-end]');
     if (si) si.value = dateStr(0);
     if (ei) ei.value = dateStr(STATE.days - 1);
-    try { localStorage.setItem('travel-handbook-plan', JSON.stringify({ start: dateStr(0), days: STATE.days })); } catch (e) {}
+    try { localStorage.setItem(PLAN_KEY, JSON.stringify({ start: dateStr(0), days: STATE.days })); } catch (e) {}
   }
 
   function dispatch() {
