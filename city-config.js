@@ -32,15 +32,29 @@
       amapCityCode: '440300',
       description: '三天从福田天际线走到南山老城，再把一整天留给大鹏的海。',
       enabled: true
+    },
+    nanchang: {
+      id: 'nanchang',
+      name: '南昌',
+      englishName: 'NANCHANG',
+      fullName: '南昌旅行手册',
+      defaultTheme: 'terracotta',
+      heroImage: 'assets/nanchang/cover-nanchang-night.jpg',
+      page: 'nanchang.html',
+      vol: 'VOL. 03 / 南昌 2026',
+      amapCityCode: '360100',
+      description: '三天走完南昌的三种气质：滕王阁与老城的千年文脉、赣江两岸的夜色灯火、汉代海昏侯的封国故地与市井烟火。',
+      enabled: true
     }
   };
 
-  var order = ['zhongshan', 'shenzhen'];
+  var order = ['zhongshan', 'shenzhen', 'nanchang'];
 
   /* 兼容别名：URL / 配置里可用的城市写法 */
   var aliases = {
     'zhongshan': 'zhongshan', 'zhong shan': 'zhongshan', '中山': 'zhongshan', '中山市': 'zhongshan',
-    'shenzhen': 'shenzhen', '深圳': 'shenzhen', '深圳市': 'shenzhen'
+    'shenzhen': 'shenzhen', '深圳': 'shenzhen', '深圳市': 'shenzhen',
+    'nanchang': 'nanchang', '南昌': 'nanchang', '南昌市': 'nanchang'
   };
 
   function resolveId(value) {
