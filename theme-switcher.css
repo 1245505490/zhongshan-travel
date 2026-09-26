@@ -663,6 +663,9 @@ body[data-handbook-theme] .hero.jungle-cover .lede{
   .shop-region>summary b,.souvenir-section>summary b{font-size:20px!important;line-height:1.3!important}
   .shop-region>summary i,.souvenir-section>summary i{grid-column:2!important;grid-row:1/3!important}
   .souvenir-section .souvenir-card{display:flex!important;flex-direction:column!important;gap:0!important;align-items:stretch!important}
+  /* 2026-09-26 · 移动端：店铺卡与体验卡改纵向流式（flex column），修复图片过大只显示左侧的裁切问题 */
+  .shop-region .shop-row{display:flex!important;flex-direction:column!important;align-items:stretch!important}
+  .movement-card.has-visual{display:flex!important;flex-direction:column!important;align-items:stretch!important}
   .souvenir-section .shop-visual,.souvenir-section .gallery-wrap,.souvenir-section .photo-strip,.souvenir-section figure,.souvenir-section img{width:100%!important;min-width:0!important;height:auto!important;aspect-ratio:4/3!important;position:relative!important}
   .souvenir-section .shop-copy{width:auto!important;padding:20px!important;position:relative!important}
   .souvenir-section .gallery-arrow,.souvenir-section .gallery-count{position:absolute!important}
